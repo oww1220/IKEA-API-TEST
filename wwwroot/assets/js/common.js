@@ -224,26 +224,27 @@
 		prodAjax: function () {
 			var ajaxBull = true;
 
-			var saleTemplete = '<span class="salePrice"><span class="value"><span class="unit">¥</span>'
-				saleTemplete += '<span class="price">0</span>'
-				saleTemplete += '<em class="perc">0</em></span></span>'
+			var saleTemplete = '<span class="salePrice"><span class="value"><span class="unit">¥</span>';
+				saleTemplete += '<span class="price">0</span>';
+				saleTemplete += '<em class="perc">0</em></span></span>';
 
 			onlineOutlet.divLength = $('.productLoad > div').length + onlineOutlet.addIdx;
 			onlineOutlet.addCount = 16;
 
 			// ajax 전에 배열 수정
 			onlineOutlet.filter();
-			//console.log(onlineOutlet.newArticleSet);
+			//console.log(onlineOutlet.divLength, onlineOutlet.divLength + onlineOutlet.addCount);
+			//console.log('promise?', Promise.all);
 
-			for (let i = onlineOutlet.divLength; i < (onlineOutlet.divLength + onlineOutlet.addCount); i++) {
+			/*
+			for (var i = onlineOutlet.divLength; i < (onlineOutlet.divLength + onlineOutlet.addCount); i++) {
 				if (i < onlineOutlet.newArticleSet.length) {
-					let item_num = onlineOutlet.newArticleSet[i];
-					let prod_number = item_num.substring(item_num.length, item_num.length - 3);
-					
+					var item_num = onlineOutlet.newArticleSet[i];
+					var prod_number = item_num.substring(item_num.length, item_num.length - 3);
 					$.ajax({
 						url: 'https://www.ikea.com/jp/en/products/'+ prod_number+'/'+ item_num +'-compact-fragment.html',
 						dataType: 'html',
-						async: true,
+						async: false,
 						success: function (data) {
 							ajaxBull = true;
 							propHTML = data;
@@ -267,47 +268,110 @@
 						},
 						complete: function () {
 							if(!ajaxBull) return;
+			 				// 빈값제거
+							new_offerPrice = onlineOutlet.newOfferPrice.filter(function(item) {
+								return item !== null && item !== undefined && item !== '';
+							});
+							new_perc = onlineOutlet.newPerc.filter(function(item) {
+								return item !== null && item !== undefined && item !== '';
+							});
+							
+							$('.productLoad').append(propHTML);
 
-							var timeFlag = 100;
-
-							(function (i, propHTML) {
-								setTimeout(function () {
-									//console.log(i, propHTML);
-									// 빈값제거
-									new_offerPrice = onlineOutlet.newOfferPrice.filter(function(item) {
-										return item !== null && item !== undefined && item !== '';
-									});
-									new_perc = onlineOutlet.newPerc.filter(function(item) {
-										return item !== null && item !== undefined && item !== '';
-									});
-									
-									$('.productLoad').append(propHTML);
-
-									// Sale price
-									$('.range-revamp-compact-price-package__price-wrapper').empty();
-									
-									$('.range-revamp-compact-price-package__price-wrapper').each(function () {
-										if ($(this).find('.salePrice').length <= 0) {
-											$(this).prepend(saleTemplete);
-										}
-									});
-									$.each(new_offerPrice, function (idx, val) {
-										$('.range-revamp-product-compact').eq(idx).find('.salePrice .price').text(val);
-									});
-									$.each(new_perc, function (idx, val) {
-										$('.range-revamp-product-compact').eq(idx).find('.salePrice .perc').text(val);
-									});
-
-									onlineOutlet.loadMore();
-								}, i)
-							})(i*timeFlag, propHTML);
-
+							// Sale price
+							$('.range-revamp-compact-price-package__price-wrapper').empty();
+							
+							$('.range-revamp-compact-price-package__price-wrapper').each(function () {
+								if ($(this).find('.salePrice').length <= 0) {
+									$(this).prepend(saleTemplete);
+								}
+							});
+							$.each(new_offerPrice, function (idx, val) {
+								$('.range-revamp-product-compact').eq(idx).find('.salePrice .price').text(val);
+							});
+							$.each(new_perc, function (idx, val) {
+								$('.range-revamp-product-compact').eq(idx).find('.salePrice .perc').text(val);
+							});
 						},
 					});
 				}
 			}
-			
 			$('.vs-loader').removeClass('on').fadeIn(0).fadeOut(1100);
+			*/
+
+			/* promise 기반 */
+			var promiseArr = [];
+			for (var i = onlineOutlet.divLength; i < (onlineOutlet.divLength + onlineOutlet.addCount); i++) {
+				if (i < onlineOutlet.newArticleSet.length) {
+					var item_num = onlineOutlet.newArticleSet[i];
+					var prod_number = item_num.substring(item_num.length, item_num.length - 3);
+					var idx = onlineOutlet.divLength>=16 ? i-onlineOutlet.divLength : i;
+					//console.log(idx);
+					promiseArr[idx] = new Promise(function(resolve, reject){
+						$.ajax({
+							url: 'https://www.ikea.com/jp/en/products/'+ prod_number+'/'+ item_num +'-compact-fragment.html',
+							dataType: 'html',
+							async: true,
+							success: function (data) {
+								resolve(data);
+							},
+							error: function (request, status, error) {
+								console.log('code = '+ request.status + ' message = ' + request.responseText + ' error = ' + error);
+
+								if (item_num != "") {
+									console.log(item_num + ': PIP does not exist.');
+								} else {
+									console.log('빈값입니다.');
+								}
+								reject(error);
+							},
+						});
+					});
+					
+				}
+			}
+			console.log(promiseArr);
+			Promise.all(promiseArr).then(function(values) {
+				//console.log(values);
+				var vlauesSum = values.reduce(function(accumulator, currentValue, currentIndex, array) {
+					return accumulator + currentValue;
+				}, '');
+				
+				var new_offerPrice = onlineOutlet.newOfferPrice.filter(function(item) {
+					return item !== null && item !== undefined && item !== '';
+				});
+				var new_perc = onlineOutlet.newPerc.filter(function(item) {
+					return item !== null && item !== undefined && item !== '';
+				});
+
+				$('.productLoad').append(vlauesSum);
+
+				// Sale price
+				$('.range-revamp-compact-price-package__price-wrapper').empty();
+											
+				$('.range-revamp-compact-price-package__price-wrapper').each(function () {
+					if ($(this).find('.salePrice').length <= 0) {
+						$(this).prepend(saleTemplete);
+					}
+				});
+				console.log(new_offerPrice, new_perc);
+				$.each(new_offerPrice, function (idx, val) {
+					$('.range-revamp-product-compact').eq(idx).find('.salePrice .price').text(val);
+				});
+				$.each(new_perc, function (idx, val) {
+					$('.range-revamp-product-compact').eq(idx).find('.salePrice .perc').text(val);
+				});
+
+				onlineOutlet.loadMore();
+
+				$('.vs-loader').removeClass('on').fadeIn(0).fadeOut(1100);
+				
+			})
+			.catch(function(err) {
+				console.log('err!!!!!', err);
+			});
+
+
 		},
 		loadMore: function () {
 			onlineOutlet.allCount = onlineOutlet.newArticleSet.length - onlineOutlet.addIdx;
