@@ -1,0 +1,296 @@
+@charset "utf-8";
+
+/*************************************************************
+		Sleep Comfort [EN]
+**************************************************************/
+#sleepComfort{margin:auto;overflow:hidden;padding-bottom:2rem;}
+#sleepComfort input[type=range]{-webkit-appearance:none;width:100%;background:transparent;}
+#sleepComfort input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;}
+#sleepComfort input[type=range]:focus{outline:none;}
+#sleepComfort input[type=range]::-ms-track{width:100%;cursor:pointer;background:transparent;border-color:transparent;color:transparent;}
+
+#sleepComfort a{color:#333;}
+#sleepComfort .pointColor{color:#ffe828;}
+
+/* VIDEO */
+video::-webkit-media-controls-start-playback-button{display:none;}
+#sleepComfort .videoArea{position:relative;overflow:hidden;height:500px;}
+#sleepComfort .videoArea .videoWrap .film{position:absolute;top:50%;left:0;transform:translateY(-50%);width:100%;}
+#sleepComfort .videoArea .videoWrap .film video{width:100%;vertical-align:top;}
+
+/* MAIN VISUAL */
+#sleepComfort .rangeArea{overflow:hidden;position:relative;z-index:10;width:100%;height:33.75rem;color:#fff;background:url('https://img.ikeajpapi.com/campaigns/2019/201910/sleepComfort/en/pc/bg_range.jpg') repeat-x;background-position:center;background-color:rgb(0,0,0);}
+#sleepComfort .rangeArea .innerWrap{position:relative;z-index:2;max-width:1200px;width:100%;margin:auto;height:33.75rem;padding:2.75rem 0 0 0}
+#sleepComfort .rangeArea .rangeCont{position:absolute;top:50%;z-index:1;transform:translateY(-50%);width:100%;padding:0 1rem;opacity:0;transition:all .8s ease;}
+
+/* Default */
+#sleepComfort .rangeArea .rangeCont.ty1{overflow:hidden;z-index:2;opacity:1;}
+#sleepComfort .rangeArea .rangeCont.ty1 .txtBox{float:left;width:47%;}
+#sleepComfort .rangeArea .rangeCont.ty1 .txtBox .txt{margin-top:1.688rem;line-height:1.688rem;text-align:center;}
+#sleepComfort .rangeArea .rangeCont.ty1 .rangeBox{float:left;width:45%;margin-left:8%;}
+#sleepComfort .rangeArea .rangeCont.ty1 .timeTxt ul{position:relative;}
+#sleepComfort .rangeArea .rangeCont.ty1 .timeTxt ul li{display:none;text-align:center;}
+#sleepComfort .rangeArea .rangeCont.ty1 .timeTxt ul li.active{display:block;}
+#sleepComfort .rangeArea .rangeCont.ty1 .timeTxt ul li > span{display:inline-block;line-height:80px;color:#ffe828;font-size:42px;font-weight:700;}
+#sleepComfort .rangeArea .rangeCont.ty1 .timeTxt ul li > span em{font-size:6rem;font-style:normal;}
+
+#sleepComfort .rangeArea .rangeCont.ty1 .cityInfo{margin-top:2.375rem;}
+#sleepComfort .rangeArea .rangeCont.ty1 .cityInfo ul{overflow:hidden;position:relative;height:48px;}
+#sleepComfort .rangeArea .rangeCont.ty1 .cityInfo ul li{position:absolute;top:0;left:0;width:100%;height:48px;line-height:24px;text-align:center;color:#fff;font-size:0.8125rem;}
+#sleepComfort .rangeArea .rangeCont.ty1 .cityInfo ul li strong{color:#ffe828;}
+#sleepComfort .rangeArea .rangeCont.ty1 .btnArea{margin-top:2.5rem;text-align:center;padding:0.75rem;}
+#sleepComfort .rangeArea .rangeCont.ty1 .btnArea a{display:inline-block;padding:0.625rem 65px;color:#fff;font-size:0.8125rem;background-color:rgba(0,0,0, 0.3);border:1px solid #fff;border-radius:30px; transition: all 150ms ease-in-out;}
+#sleepComfort .rangeArea .rangeCont.ty1 .btnArea a:hover{box-shadow: 0 0 10px 0 #ffe828 inset, 0 0 10px 4px #ffe828;color:#ffe828}
+
+#sleepComfort .rangeArea .moon1{position:absolute;top:-90px;left:50%;width:265px;height:265px;transform:translateX(-260%);background:url('https://img.ikeajpapi.com/campaigns/2019/201910/sleepComfort/ja/pc/bg_moon1.png') no-repeat;-webkit-animation:fadeOut 4s 1s infinite linear alternate;-moz-animation: fadeOut 4s 1s infinite linear alternate;-ms-animation: fadeOut 4s 1s infinite linear alternate;-o-animation: fadeOut 4s 1s infinite linear alternate;animation: fadeOut 4s 1s infinite linear alternate;opacity:0.2;}
+#sleepComfort .rangeArea .moon2{position:absolute;bottom:-51.125rem;right:50%;width:100.8125rem;height:1045px;transform:translateX(124%);background:url('https://img.ikeajpapi.com/campaigns/2019/201910/sleepComfort/ja/pc/bg_moon2.png') no-repeat;-webkit-animation:fadeOut 4s 1s infinite linear alternate;-moz-animation: fadeOut 4s 1s infinite linear alternate;-ms-animation: fadeOut 4s 1s infinite linear alternate;-o-animation: fadeOut 4s 1s infinite linear alternate;animation: fadeOut 4s 1s infinite linear alternate;opacity:0.2;}
+#sleepComfort .rangeArea .contBar{display:none;position:absolute;bottom:0;z-index:1;width:100%;height:140px;background:url('https://img.ikeajpapi.com/campaigns/2019/201910/sleepComfort/en/pc/bg_rangeArea_bar.jpg') repeat-x;}
+/* Range */
+#sleepComfort .rangeArea .range{padding:0 1.5rem 0 2rem;}
+#sleepComfort .rangeArea .rangeLavel{width:100%;}
+#sleepComfort .rangeArea .rangeLavel ul{display:table;table-layout:fixed;width:100%;overflow:hidden;margin-top:0.625rem;}
+#sleepComfort .rangeArea .rangeLavel li{display:table-cell;width:14%;font-size:0.6875rem;text-align:center;}
+#sleepComfort .rangeArea .rangeBar{position:relative;padding:0 11px;}
+#sleepComfort .rangeArea .ui-slider{position:relative;width:100%;height:5px;background-color:#2b0c53;border-radius:15px;}
+#sleepComfort .rangeArea .ui-slider:after{position:absolute;top:0;right:-14px;width:16px;height:5px;background-color:#2b0c53;border-top-right-radius:15px;border-bottom-right-radius:15px;content:"";}
+#sleepComfort .rangeArea .ui-slider-range{position:absolute;height:100%;z-index:1;background-color:#ffe828;border-radius:15px;}
+#sleepComfort .rangeArea .ui-slider .ui-slider-handle{position:absolute;left:-4%;top:-24px;z-index:2;height:50px;width:50px;background:url('https://img.ikeajpapi.com/campaigns/2019/201910/sleepComfort/en/pc/btn_range.png') no-repeat;cursor:pointer;transform:translateX(-36%);outline:0}
+
+#sleepComfort .rangeArea .ico{width:6rem;height:6rem;}
+#sleepComfort .rangeArea .ico img{width:100%;}
+#sleepComfort .rangeArea .tit{display:block;font-size:2.375rem;line-height:2.5rem;text-align:center;}
+#sleepComfort .rangeArea .titDe{margin-top:6px;text-align:center;font-size:14px;}
+#sleepComfort .rangeArea .infoList{overflow:hidden;margin:26px 217px 0;}
+#sleepComfort .rangeArea .infoList li{float:left;width:25%;text-align:center;}
+#sleepComfort .rangeArea .infoList li .ico{display:inline-block;}
+#sleepComfort .rangeArea .infoList li .txt{margin-top:6px;text-align:center;}
+#sleepComfort .rangeArea .retry{margin-top:1.125rem;text-align:center;}
+#sleepComfort .rangeArea .retry > a{display:inline-block;color:#fff;border-bottom:1px solid #fff;}
+#sleepComfort .rangeArea .retry > a span{display:inline-block;padding-left:1.125rem;vertical-align:top;background:url('https://img.ikeajpapi.com/campaigns/2019/201910/sleepComfort/en/pc/ico_retry.png') no-repeat center left;}
+
+#sleepComfort .rangeArea .rangeCont.ty2{padding:2rem 0 10rem;}
+#sleepComfort .rangeArea .rangeCont.ty3{padding:0 0 9rem;}
+#sleepComfort .rangeArea .rangeCont.ty2 > .tit{text-align:center;}
+#sleepComfort .rangeArea .rangeCont.ty3 > .tit{text-align:center;}
+
+#sleepComfort .rangeArea .bottomTxt{position:absolute;bottom:0;left:50%;transform:translateX(-50%);min-width:41.25rem;text-align:center;}
+#sleepComfort .rangeArea .rangeCont.ty2 .bottomTxt{bottom:1.25vw;}
+#sleepComfort .rangeArea .bottomTxt .tit{font-weight:700;font-size:1.125rem;text-align:center;line-height:1.25rem;}
+#sleepComfort .rangeArea .bottomTxt .txt{margin-top:0.625rem;text-align:center;font-size:0.8125rem;}
+
+#sleepComfort .rangeArea .rangeBar{position:relative;margin-top:-14px;padding:0 24px;}
+#sleepComfort .rangeArea .rangeBar #slider-range{display:none !important;}
+#sleepComfort .rangeArea .irs--flat{height:30px;}
+#sleepComfort .rangeArea .irs-line{position:relative;width:100%;height:5px;margin:0;background-color:#2b0c53;border-radius:15px;}
+#sleepComfort .rangeArea .irs-bar.irs-bar--single{position:absolute;height:5px;z-index:1;background-color:#ffe828;border-radius:15px;}
+#sleepComfort .rangeArea .irs-min,#sleepComfort .rangeArea .irs-to{display:none;}
+#sleepComfort .rangeArea .irs-max{display:none;}
+#sleepComfort .rangeArea .irs-single{position:absolute;left:0;top:-1px;margin-left:4%;z-index:2;height:3.5rem;width:3.5rem;font-size:0;line-height:0;background:url('https://img.ikeajpapi.com/campaigns/2019/201910/sleepComfort/en/mo/btn_range.png') no-repeat;cursor:pointer;transform:translateX(-36%);outline:0;background-size:3.5rem;}
+#sleepComfort .rangeArea .irs-single:before{display:none;}
+#sleepComfort .rangeArea .irs-handle.single{display:none;}
+
+/* CONTENTS */
+#sleepComfort .contArea{position:relative;z-index:10;width:100%;height:100%;padding-top:3rem;background-color:#fff;}
+#sleepComfort .contWrap{position:relative;z-index:10;width:100%;background-color:#fff;}
+#sleepComfort .contWrap > .tit{font-weight:700;font-size:26px;line-height:28px;text-align:center;}
+/* tab */
+#sleepComfort .tab{width:100%;margin-top:2.75rem;}
+#sleepComfort .tab ul{display:block;width:100%;table-layout:fixed;text-align:center;}
+#sleepComfort .tab ul li{display:inline-block;}
+#sleepComfort .tab ul li+li{margin-left:8px;}
+#sleepComfort .tab ul li a{display:block;height:2.25rem;padding:0 1.125rem;text-align:center;font-size:0.8125rem;border:1px solid #dfdfdf;border-radius:1.125rem;background-color:#fff;color:#999;}
+#sleepComfort .tab ul li a:hover{color:#fff;border:1px solid #5d1b8b;background-color:#5d1b8b;transition: all ease-in-out .3s 0s;}
+#sleepComfort .tab ul li.on a{color:#fff;border:1px solid #5d1b8b;background-color:#5d1b8b;}
+#sleepComfort .tab ul li a .txt{width:100%;line-height:2.125rem;text-align:center;}
+
+#sleepComfort .contents{margin-top:60px;}
+#sleepComfort .contents .list{display:none;}
+#sleepComfort .contents .list.on{display:block;}
+#sleepComfort .contents .list .topVisual{overflow:hidden;}
+#sleepComfort .contents .list .topVisual .imgBox{float:left;width:45%;}
+#sleepComfort .contents .list .topVisual .imgBox img{width:100%;}
+#sleepComfort .contents .list .topVisual .txtbox{position:relative;float:left;width:52%;height:346px;margin-left:3%;}
+#sleepComfort .contents .list .topVisual .txtbox .txt{font-size:0.8125rem;line-height:1.25rem;}
+#sleepComfort .contents .list .topVisual .txtbox .txt+.txt{margin-top:0.625rem;}
+#sleepComfort .contents .list .topVisual .txtbox .txt strong{display:block;}
+#sleepComfort .contents .list .topVisual .txtbox .linkBox{position:absolute;bottom:0;left:0;width:100%;}
+#sleepComfort .contents .list .topVisual .txtbox .linkBox .linkBtn{display:block;}
+#sleepComfort .contents .list .topVisual .txtbox .linkBox .linkBtn+.linkBtn{margin-top:0.625rem;}
+#sleepComfort .contents .list .topVisual .txtbox .linkBox .linkBtn a{display:block;padding:0.625rem 0;border:1px solid #dfdfdf;border-radius:40px;vertical-align:middle;text-align:center;}
+
+/* TAB CONTENTS > KEY PRODUCTS */
+#sleepComfort .keyProduct{margin-top:4.375rem;padding-top:4.375rem;border-top:1px solid #dbdbdb;}
+#sleepComfort .keyProduct h3{font-weight:700;font-size:22px;line-height:28px;}
+#sleepComfort .keyProduct .productList > .tit{display:block;margin-top:54px;font-size:1.25rem;text-align:center;}
+
+/*Banner*/
+#sleepComfort .list .banner{margin-top:2rem;padding:0 8rem;}
+#sleepComfort .list .banner a{display:block;}
+#sleepComfort .list .banner .img{display:block;}
+#sleepComfort .list .banner img{width:100%;}
+
+#sleepComfort .range-product-list{margin-bottom:0;}
+#sleepComfort .product-compact{padding:3rem 0;}
+#sleepComfort .product-compact__spacer{padding:0 3rem;}
+
+@keyframes fadeOut {
+  0% {
+	opacity: 0.2;
+  }
+  100% {
+	opacity: 0.8;
+  }
+}
+@-webkit-keyframes fadeOut {
+  0% {
+	opacity: 0.2;
+  }
+  100% {
+	opacity: 0.8;
+  }
+}
+@-moz-keyframes fadeOut {
+  0% {
+	opacity: 0.2;
+  }
+  100% {
+	opacity: 0.8;
+  }
+}
+@-ms-keyframes fadeOut {
+  0% {
+	opacity: 0.2;
+  }
+  100% {
+	opacity: 0.8;
+  }
+}
+@-o-keyframes fadeOut {
+  0% {
+	opacity: 0.2;
+  }
+  100% {
+	opacity: 0.8;
+  }
+}
+@keyframes fadeOut {
+  0% {
+	opacity: 0.2;
+  }
+  100% {
+	opacity: 0.8;
+  }
+}
+
+/* 태블릿 */
+@media (min-width: 768px) and (max-width: 1023px){
+	#sleepComfort .videoArea{height:330px;}
+
+	/* MAIN VISUAL */
+	#sleepComfort .rangeArea{height:33.75rem;}
+	#sleepComfort .rangeArea .range{padding:0 2.25rem;}
+	#sleepComfort .rangeArea .rangeCont{padding:0 4rem;}
+	/* Default */
+	#sleepComfort .rangeArea .rangeCont.ty1 .txtBox{float:none;width:100%;}
+	#sleepComfort .rangeArea .rangeCont.ty1 .txtBox .txt{margin-top:1rem;font-size:0.875rem;line-height:1.5rem;}
+	#sleepComfort .rangeArea .rangeCont.ty1 .rangeBox{float:none;width:100%;margin-left:0;margin-top:2rem;}
+	#sleepComfort .rangeArea .rangeCont.ty1 .timeTxt ul li > span{line-height:4.375rem;font-size:2.375rem;}
+	#sleepComfort .rangeArea .rangeCont.ty1 .timeTxt ul li > span em{font-size:5rem;}
+	#sleepComfort .rangeArea .rangeCont.ty1 .cityInfo{margin-top:1.5rem;}
+	#sleepComfort .rangeArea .rangeCont.ty1 .btnArea{margin-top:2rem;}
+	#sleepComfort .rangeArea .rangeCont.ty1 .btnArea a:hover{box-shadow:none;color:#fff}
+	#sleepComfort .rangeArea .moon1{top:-50px;left:730px;width:20rem;height:20rem;background-size:100% 100%;}
+	#sleepComfort .rangeArea .moon2{bottom:-66rem;right:62rem;width:80rem;height:80rem;background-size:100% 100%;}
+
+	#sleepComfort .rangeArea .infoList{margin:0;margin-top:2rem;padding:0 4rem;}
+	#sleepComfort .rangeArea .infoList li .txt{font-size:0.9375rem;line-height:1.25rem;}
+
+	#sleepComfort .rangeArea .bottomTxt{min-width:auto;width:100%;padding:0 4rem;}
+
+	#sleepComfort .rangeArea .rangeCont.ty2{padding:2rem 0 8rem;}
+
+	/* CONTENTS */
+	#sleepComfort .contArea{padding:3rem 0;}
+	/* tab */
+	#sleepComfort .tab{width:100%;margin-top:2.75rem;overflow:hidden;width:100%;}
+	#sleepComfort .tab > div{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+	#sleepComfort .tab ul{display:table;width:100%;table-layout:auto;}
+	#sleepComfort .tab ul li{display:table-cell;min-width:5rem;vertical-align:top;padding-right:1rem;}
+	#sleepComfort .tab ul li+li{margin-left:0;}
+	#sleepComfort .tab ul li a{display:block;height:2.25rem;padding:0 1.125rem;text-align:center;font-size:0.8125rem;border:1px solid #dfdfdf;border-radius:1.125rem;background-color:#fff;color:#999;white-space:nowrap;}
+	#sleepComfort .tab ul li a:hover{color:#999;border:1px solid #dfdfdf;background-color:#fff;}
+	#sleepComfort .tab ul li.on a{color:#fff;border:1px solid #5d1b8b;background-color:#5d1b8b;}
+	#sleepComfort .tab ul li a .txt{width:100%;line-height:2.125rem;text-align:center;}
+
+	#sleepComfort .contents .list .topVisual .imgBox{float:left;width:43%;}
+	#sleepComfort .contents .list .topVisual .txtbox{position:relative;float:left;width:53%;height:auto;margin-left:2%;}
+	#sleepComfort .contents .list .topVisual .txtbox .txt{font-size:0.8125rem;line-height:1.25rem;}
+	#sleepComfort .contents .list .topVisual .txtbox .txt+.txt{margin-top:0.625rem;}
+	#sleepComfort .contents .list .topVisual .txtbox .linkBox{position:static;width:100%;margin-top:1rem;}
+	#sleepComfort .contents .list .topVisual .txtbox .linkBox .linkBtn a{display:block;padding:0.5rem 0;font-size:0.875rem;}
+
+	#sleepComfort .list .banner{margin-top:1.5rem;padding:0 4rem;}
+
+	#sleepComfort .product-compact{padding:2rem 0;}
+	#sleepComfort .product-compact__spacer{padding:0 2rem;}
+}
+
+/* 모바일 */
+@media (max-width: 767px){
+	#sleepComfort .videoArea{height:150px;}
+
+	/* MAIN VISUAL */
+	#sleepComfort .rangeArea{height:40rem;background-size:auto 100%;}
+	#sleepComfort .rangeArea .innerWrap{height:100%;padding:0;}
+	#sleepComfort .rangeArea .rangeCont{position:absolute;top:50%;z-index:1;transform:translateY(-50%);width:100%;padding:0 1rem;opacity:0;transition:all .8s ease;}
+
+	/* Default */
+	#sleepComfort .rangeArea .tit{font-size:1.75rem;line-height:2rem;}
+	#sleepComfort .rangeArea .rangeCont.ty1 .txtBox{float:none;width:100%;}
+	#sleepComfort .rangeArea .rangeCont.ty1 .txtBox .txt{margin-top:1rem;font-size:0.875rem;line-height:1.5rem;}
+	#sleepComfort .rangeArea .rangeCont.ty1 .rangeBox{float:none;width:100%;margin-left:0;margin-top:1rem;}
+	#sleepComfort .rangeArea .rangeCont.ty1 .timeTxt ul li > span{line-height:4rem;font-size:2rem;}
+	#sleepComfort .rangeArea .rangeCont.ty1 .timeTxt ul li > span em{font-size:4rem;}
+	#sleepComfort .rangeArea .rangeCont.ty1 .cityInfo{margin-top:1.5rem;}
+	#sleepComfort .rangeArea .rangeCont.ty1 .btnArea{margin-top:2rem;}
+	#sleepComfort .rangeArea .rangeCont.ty1 .btnArea a:hover{box-shadow:none;color:#fff}
+	#sleepComfort .rangeArea .moon1{top:-50px;left:730px;width:20rem;height:20rem;background-size:100% 100%;}
+	#sleepComfort .rangeArea .moon2{bottom:-66rem;right:62rem;width:80rem;height:80rem;background-size:100% 100%;}
+	#sleepComfort .rangeArea .rangeBar{padding:0;}
+	#sleepComfort .rangeArea .range{padding:0 0.75rem 0 1rem;}
+
+	#sleepComfort .rangeArea .rangeCont.ty2,
+	#sleepComfort .rangeArea .rangeCont.ty3{height:100%;padding:6rem 1rem 1rem;}
+
+	#sleepComfort .rangeArea .infoList{margin:0;margin-top:2rem;}
+	#sleepComfort .rangeArea .infoList li .txt{font-size:0.75rem;line-height:1rem;}
+	#sleepComfort .rangeArea .ico{width:4rem;height:4rem;}
+
+	#sleepComfort .rangeArea .bottomTxt{bottom:7vw;width:100%;min-width:auto;padding:0 1rem;}
+	#sleepComfort .rangeArea .rangeCont.ty2 .bottomTxt{bottom:11vw;}
+
+	#sleepComfort .rangeArea .irs-single{margin-left:7%;transform:translateX(-34%);}
+
+	/* CONTENTS */
+	#sleepComfort .contArea{padding:2rem 0;}
+	/* tab */
+	#sleepComfort .tab{width:100%;margin-top:2.75rem;overflow:hidden;width:100%;}
+	#sleepComfort .tab > div{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+	#sleepComfort .tab ul{display:table;width:100%;table-layout:auto;}
+	#sleepComfort .tab ul li{display:table-cell;min-width:5rem;vertical-align:top;padding-right:1rem;}
+	#sleepComfort .tab ul li+li{margin-left:0;}
+	#sleepComfort .tab ul li a{display:block;height:2.25rem;padding:0 1.125rem;text-align:center;font-size:0.8125rem;border:1px solid #dfdfdf;border-radius:1.125rem;background-color:#fff;color:#999;white-space:nowrap;}
+	#sleepComfort .tab ul li a:hover{color:#999;border:1px solid #dfdfdf;background-color:#fff;}
+	#sleepComfort .tab ul li.on a{color:#fff;border:1px solid #5d1b8b;background-color:#5d1b8b;}
+	#sleepComfort .tab ul li a .txt{width:100%;line-height:2.125rem;text-align:center;}
+
+	#sleepComfort .contents .list .topVisual .imgBox{float:none;width:100%;}
+	#sleepComfort .contents .list .topVisual .txtbox{float:none;width:100%;height:auto;margin-left:0;margin-top:1rem;}
+	#sleepComfort .contents .list .topVisual .txtbox .linkBox{position:static;margin-top:2rem;}
+	#sleepComfort .contents .list .topVisual .txtbox .linkBox .linkBtn a{font-size:0.75rem;line-height:1.25rem;letter-spacing:-.5px;}
+
+	#sleepComfort .list .banner{margin-top:1rem;padding:0;}
+
+	#sleepComfort .product-compact{padding:1.5rem 0;}
+	#sleepComfort .product-compact__spacer{padding:0 1.5rem;}
+}

@@ -298,7 +298,7 @@
 			}
 			$('.vs-loader').removeClass('on').fadeIn(0).fadeOut(1100);
 			*/
-
+			
 			/* promise 기반 */
 			var promiseArr = [];
 			for (var i = onlineOutlet.divLength; i < (onlineOutlet.divLength + onlineOutlet.addCount); i++) {
@@ -307,6 +307,21 @@
 					var prod_number = item_num.substring(item_num.length, item_num.length - 3);
 					var idx = onlineOutlet.divLength>=16 ? i-onlineOutlet.divLength : i;
 					//console.log(idx);
+
+					promiseArr[idx] = fetch(
+							'https://www.ikea.com/jp/en/products/'+ prod_number+'/'+ item_num +'-compact-fragment.html'
+						).then(function(response) {
+						// Shorthand to check for an HTTP 2xx response status.
+						// See https://fetch.spec.whatwg.org/#dom-response-ok
+						if (response.ok) {
+							return response;
+						}
+						// Raise an exception to reject the promise and trigger the outer .catch() handler.
+						// By default, an error response status (4xx, 5xx) does NOT cause the promise to reject!
+						throw Error(response.statusText);
+					})
+
+					/*
 					promiseArr[idx] = new Promise(function(resolve, reject){
 						$.ajax({
 							url: 'https://www.ikea.com/jp/en/products/'+ prod_number+'/'+ item_num +'-compact-fragment.html',
@@ -327,6 +342,7 @@
 							},
 						});
 					});
+					*/
 					
 				}
 			}
