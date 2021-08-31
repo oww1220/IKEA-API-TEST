@@ -16,9 +16,10 @@ $(function(){
 	function faqListEach() {
 		$('.faq-list li').removeClass('sort-active');
 		$('.faq-list li').each(function(idx, item){
-			var itemSort = $(item).data('sort');
+			var $target = $(item);
+			var itemSort = $target.data('sort');
 			if(itemSort === curActiveVal || curActiveVal === '전체') {
-				$(item).addClass('sort-active');
+				$target.addClass('sort-active');
 				//console.log(item);
 			}
 		});
@@ -29,6 +30,7 @@ $(function(){
 		curActiveVal = $(this).data('active');
 		//console.log(curActiveVal);
 		faqListEach();
+		if($('.category-search input').val()) searchFaq();
 	});
 
 	function searchFaq() {
@@ -38,16 +40,18 @@ $(function(){
 		console.log(searchVal, regex);
 		$('.faq-list li').removeClass('no-serach');
 		$('.faq-list li').each(function(idx, item){
-			var tarTxtSt = $(item).find('.faq-top strong').text();
-			var tarTxtQa = $(item).find('.faq-top .faq-qa').text();
-			var tarTxtAw = $(item).find('.faq-cont .faq-aw').text();
+			var $target = $(item);
+			if(!$target.hasClass('sort-active')) return;
+			var tarTxtSt = $target.find('.faq-top strong').text();
+			var tarTxtQa = $target.find('.faq-top .faq-qa').text();
+			var tarTxtAw = $target.find('.faq-cont .faq-aw').text();
 
 			if(regex.test(tarTxtSt) || regex.test(tarTxtQa) || regex.test(tarTxtAw)){
-				console.log(tarTxtSt, tarTxtQa, tarTxtAw);
+				//console.log(tarTxtSt, tarTxtQa, tarTxtAw);
 				searchIdx++;
 			}
 			else {
-				$(item).addClass('no-serach');
+				$target.addClass('no-serach');
 			}			
 		});
 		if(searchIdx) {
@@ -56,7 +60,7 @@ $(function(){
 		else {
 			$('.faq-list .no-result').show();
 		}
-		console.log(searchIdx);
+		//console.log(searchIdx);
 
 	}
 
