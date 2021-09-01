@@ -2,7 +2,8 @@
 .category-wrap {
 	@include Flex-between-center;
     flex-direction: row-reverse;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #000;
 }
 .category-list {
     ul {
@@ -45,29 +46,11 @@
     }
 }
 
-.faq-list {
-    border-top: 2px solid #000;
-    li {
-        border-bottom:1px solid $borderColor2;
-        display: none;
-    }
-    .sort-active{
-        display: block;
-    }
-    .no-serach {
-        display: none;
-    }
-    .no-result {
-        display: none;
-        font-size: 25px;
-        line-height: 40px;
-        text-align: center;
-        padding: 50px;
-    }
-}
 
 
 .faq-item {
+    border-bottom:1px solid $borderColor2;
+    display: none;
     .faq-top {
         cursor: pointer;
         padding: 50px;
@@ -114,6 +97,20 @@
             display: block;
         }
     }
+
+    &.sort-active{
+        display: block;
+    }
+    &.no-serach {
+        display: none;
+    }
+    &.no-result {
+        display: none;
+        font-size: 25px;
+        line-height: 40px;
+        text-align: center;
+        padding: 50px;
+    }
 }
 
 
@@ -122,9 +119,8 @@
         overflow-x: hidden;
     }
     .category-wrap {
-        padding: 0 15px;
+        padding: 0 0px 15px;
         display: block;
-        margin-bottom: 15px;
     }
     .category-list {
         margin-top: 37px;
@@ -147,13 +143,6 @@
             width: 33px;
             height: 33px;
             background-size: 50%;
-        }
-    }
-    .faq-list {
-        .no-result {
-            font-size: 16px;
-            line-height: 21px;
-            padding: 25px 10px;
         }
     }
     .faq-item {
@@ -182,6 +171,11 @@
                 line-height: 21px;
             }
         }
+        &.no-result {
+            font-size: 16px;
+            line-height: 21px;
+            padding: 25px 10px;
+        }
     }
 
 
@@ -198,12 +192,6 @@
     .category-search {
         input {
             font-size: 13px;
-        }
-    }
-    .faq-list {
-        .no-result {
-            font-size: 13px;
-            line-height: 18px;
         }
     }
     .faq-item {
@@ -223,6 +211,10 @@
                 font-size: 13px;
                 line-height: 18px;
             }
+        }
+        &.no-result {
+            font-size: 13px;
+            line-height: 18px;
         }
     }
 

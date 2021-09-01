@@ -1,0 +1,72 @@
+/* faq */
+.category-wrap {
+	@include Flex-between-center;
+    margin-bottom: 30px;
+}
+.category-list {
+    ul {
+        display: flex;
+        align-items: center;
+        li {
+            margin-right: 30px;
+            cursor: pointer;
+            font-size: 25px;
+            &.active {
+                color: blue;
+            }
+        }
+    }
+}
+
+.terms-list {
+    border-top: 2px solid #000;
+    li {
+        display: none;
+    }
+    .sort-active{
+        display: block;
+    }
+}
+
+.term-item {
+
+}
+
+
+
+
+@include tab {
+    html, body {
+        overflow-x: hidden;
+    }
+    .category-wrap {
+        padding: 0 15px;
+        display: block;
+        margin-bottom: 15px;
+    }
+    .category-list {
+        margin-top: 37px;
+        ul {
+            @include Flex-around-center;
+            li {
+                margin: 0;
+                font-size: 16px;
+            }
+        }
+    }
+
+
+
+}
+
+@include mob {
+    .category-list {
+        ul {
+            li {
+                font-size: 13px;
+            }
+        }
+    }
+
+
+}

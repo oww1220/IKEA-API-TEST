@@ -14,8 +14,8 @@ $(function(){
 	var curActiveVal = '전체';
 	faqListEach();
 	function faqListEach() {
-		$('.faq-list li').removeClass('sort-active');
-		$('.faq-list li').each(function(idx, item){
+		$('.faq-item').removeClass('sort-active');
+		$('.faq-item').each(function(idx, item){
 			var $target = $(item);
 			var itemSort = $target.data('sort');
 			if(itemSort === curActiveVal || curActiveVal === '전체') {
@@ -37,9 +37,9 @@ $(function(){
 		var searchIdx = 0;
 		var searchVal = $('.category-search input').val();
 		var regex = new RegExp(searchVal,'gi');
-		console.log(searchVal, regex);
-		$('.faq-list li').removeClass('no-serach');
-		$('.faq-list li').each(function(idx, item){
+		//console.log(searchVal, regex);
+		$('.faq-item').removeClass('no-serach');
+		$('.faq-item').each(function(idx, item){
 			var $target = $(item);
 			if(!$target.hasClass('sort-active')) return;
 			var tarTxtSt = $target.find('.faq-top strong').text();
@@ -55,10 +55,10 @@ $(function(){
 			}			
 		});
 		if(searchIdx) {
-			$('.faq-list .no-result').hide();
+			$('.faq-item.no-result').hide();
 		}
 		else {
-			$('.faq-list .no-result').show();
+			$('.faq-item.no-result').show();
 		}
 		//console.log(searchIdx);
 
