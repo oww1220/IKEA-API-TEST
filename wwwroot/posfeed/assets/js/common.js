@@ -1,11 +1,11 @@
 $(function(){
 
 	var titArray = [
-		'포스피드 고객지원입니다. <strong>자주 묻는 질문</strong>이 궁금하신가요?', 
-		'포스피드 고객지원입니다. <strong>제휴 문의</strong>가 궁금하신가요?',
-		'포스피드 고객지원입니다. <strong>해지신청</strong>이 궁금하신가요?',
-		'포스피드 고객지원입니다. <strong>포스피드를 만드는 (주)헬로월드</strong>가 궁금하신가요?',
-		'포스피드 고객지원입니다. <strong>이용약관</strong>이 궁금하신가요?',
+		'포스피드 고객지원입니다.<br class="only-mo"/><strong>자주 묻는 질문</strong>이 궁금하신가요?', 
+		'포스피드 고객지원입니다.<br class="only-mo"/><strong>제휴 문의</strong>가 궁금하신가요?',
+		'포스피드 고객지원입니다.<br class="only-mo"/><strong>해지신청</strong>이 궁금하신가요?',
+		'포스피드 고객지원입니다.<br class="only-mo"/><strong>포스피드를 만드는 (주)헬로월드</strong>가 궁금하신가요?',
+		'포스피드 고객지원입니다.<br class="only-mo"/><strong>이용약관</strong>이 궁금하신가요?',
 	];
 	function titChange(){
 		var $target = $('.tabmenu > a');
@@ -98,12 +98,57 @@ $(function(){
     });
 
 
+	// hash chk
+	function hashChk() {
+		var hash = location.hash.substring(1);
+		console.log(hash);
+		hashSwitch(hash);
+
+	}
+
+	function hashSwitch(hash){
+		var $menu = $('.tabmenu > a');
+		var $innermenu = $('.innertabmenu > a');
+		switch (hash) {
+			case '1':
+				//console.log( '1' );
+				$menu.eq(1).trigger('click');
+				break;
+			case '2':
+				//console.log( '2' );
+				$menu.eq(3).trigger('click');
+				break;
+			case '3':
+				//console.log( '3' );
+				$menu.eq(4).trigger('click');
+				$innermenu.eq(0).trigger('click');
+				break;
+			case '4':
+				//console.log( '4' );
+				$menu.eq(4).trigger('click');
+				$innermenu.eq(1).trigger('click');
+				break;
+			default:
+				$menu.eq(0).trigger('click');
+		}
+	}
+
+	hashChk();
+
+	$('.footerlinklist > a').click(function(){
+		$(window).scrollTop(0);
+		var idx = $(this).index();
+		//console.log(idx/2+1+'');
+		hashSwitch(idx/2+1+'');
+		//return false;
+	});
+
 	
 });
 
 
 $(function(){
-	$('.header-sub a').on('click', function(e){
+	$('.header-sub .history-back').on('click', function(e){
 		history.back(); 
 		e.preventDefault();
 	});

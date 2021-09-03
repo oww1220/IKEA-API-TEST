@@ -1,72 +1,66 @@
-/* faq */
-.category-wrap {
-	@include Flex-between-center;
-    margin-bottom: 30px;
-}
-.category-list {
-    ul {
-        display: flex;
-        align-items: center;
-        li {
-            margin-right: 30px;
-            cursor: pointer;
-            font-size: 25px;
-            &.active {
-                color: blue;
-            }
-        }
-    }
-}
 
-.terms-list {
-    border-top: 2px solid #000;
-    li {
-        display: none;
-    }
-    .sort-active{
+.layer-wrap {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 60;
+    &::after{
         display: block;
+        content: '';
+        background-color: #000;
+        width: 100%;
+        height: 100%;
+        @include Position($top:0, $left:0);
+        opacity: .5;
+    }
+    .layer-in{
+        position: relative;
+        max-width: 800px;
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        z-index: 1;
+    }
+    .layer-cont {
+        max-height: calc(100vh - 40px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: center;
+        padding: 20px 0;
+    }
+    .layer-close {
+        background: url('https://uploads-ssl.webflow.com/612c58763320b7f33dc4307b/612c58763320b76376c43119_Close.svg') no-repeat center center;
+        @include Hide_txt;
+        width: 50px;
+        height: 50px;
+        @include Position($top:-30px, $right:20px);
+        cursor: pointer;
+    }
+    .video-wrap {position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;}
+    .video-wrap iframe,
+    .video-wrap object,
+    .video-wrap embed {position:absolute; top:0; left:0; width:100%; height:100%;
+    }
+
+    &.active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 }
-
-.term-item {
-
-}
-
 
 
 
 @include tab {
-    html, body {
-        overflow-x: hidden;
-    }
-    .category-wrap {
-        padding: 0 15px;
-        display: block;
-        margin-bottom: 15px;
-    }
-    .category-list {
-        margin-top: 37px;
-        ul {
-            @include Flex-around-center;
-            li {
-                margin: 0;
-                font-size: 16px;
-            }
-        }
-    }
-
 
 
 }
 
 @include mob {
-    .category-list {
-        ul {
-            li {
-                font-size: 13px;
-            }
-        }
-    }
 
 
 }

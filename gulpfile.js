@@ -41,7 +41,7 @@ gulp.task('sass', ()=>
             //indentWidth: 1,
         }).on('error', sass.logError)
     )
-    .pipe(cssnano())
+    .pipe(cssnano({zindex: false}))
     .pipe(
         autoprefixer({
             cascade: true,

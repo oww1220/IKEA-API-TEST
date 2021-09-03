@@ -137,11 +137,18 @@
     color: #fff !important;
 }
 
+.only-mo {
+    display: none;
+}
 
 @include tab {
     html {
         overflow-x: hidden;
     }
+    .only-mo {
+        display: block;
+    }
+    
     .category-wrap {
         padding: 0 0px 15px;
         display: block;
