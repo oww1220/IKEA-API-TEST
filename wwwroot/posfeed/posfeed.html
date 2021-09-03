@@ -11,12 +11,26 @@
     <link rel="stylesheet" href="./assets/css/modules.css">
     <link rel="stylesheet" href="./assets/styles/modules.css">
 
+	<!—[if lte IE 8]>
+	<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+	<![endif]—>
+	<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+	<script>
+		hbspt.forms.create({
+			region: "na1",
+			portalId: "8300948",
+			formId: "ec8c802b-6421-4aef-99b9-4349ab227328",
+			target: "#hs_custom_form",
+		});
+	</script>
     
 </head>
 
 <body>
 
-	
+	<div id="hs_custom_form"> </div>
+
+
 	<div class="category-wrap">
 		<div class="category-search">
 			<input type="text" placeholder="무엇을 도와드릴까요?" />
@@ -332,7 +346,92 @@
 				<div class="faq-item no-result" data-sort="noResult">
 					검색 결과가 없습니다.
 				</div>
-			
+
+				<table class="MsoNormalTable">
+					<tbody>
+						<tr>
+							<td>
+								<p>장애시간</p>
+							</td>
+							<td>
+								<p>보상기준</p>
+							</td>
+							<td>
+								<p>비고</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>1시간미만</p>
+							</td>
+							<td>
+								<p>없음</p>
+							</td>
+							<td>
+								<p></p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>1시간미만</p>
+							</td>
+							<td>
+								<p>없음</p>
+							</td>
+							<td>
+								<p></p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>1시간 이상 5시간 미만</p>
+							</td>
+							<td>
+								<p>이용료의 10% 페이백</p>
+							</td>
+							<td rowspan="4">
+								<p>
+									포스피드 금월 이용료 계산 페이백 (VAT포함 금액)<br/>
+									- 장애발생일 기준 당월 이용료 페이백
+								</p>
+								<p>
+									- 단, 이용료 정산입금 이후 이용료 청구 계좌 또는 카드로 페이백 적용
+								</p>
+								<p>
+									- 24 시간 이상의 서비스 장애가 발생한 경우 이용료 100% 페이백 외  통상 손해 등을 고려하여 초과 보상을 산정할 예정  
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>5시간 이상 12시간 미만</p>
+							</td>
+							<td>
+								<p>이용료의 50% 페이백</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>12시간 이상 24시간 미만</p>
+							</td>
+							<td>
+								<p>이용료의 100% 페이백</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>24시간 이상</p>
+							</td>
+							<td>
+								<p>
+									자체공지 (이용료 100% 페이백 외 초과 보상제공)
+								</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				
 		
 	
 				<!--
@@ -701,11 +800,53 @@
 
 
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="./assets/js/common.js"></script>
 
+<!-- Channel Plugin Scripts -->
+<script>
+(function() {
+	var w = window;
+	if (w.ChannelIO) {
+		return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+	}
+	var ch = function() {
+		ch.c(arguments);
+	};
+	ch.q = [];
+	ch.c = function(args) {
+		ch.q.push(args);
+	};
+	w.ChannelIO = ch;
+	function l() {
+		if (w.ChannelIOInitialized) {
+		return;
+		}
+		w.ChannelIOInitialized = true;
+		var s = document.createElement('script');
+		s.type = 'text/javascript';
+		s.async = true;
+		s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+		s.charset = 'UTF-8';
+		var x = document.getElementsByTagName('script')[0];
+		x.parentNode.insertBefore(s, x);
+	}
+	if (document.readyState === 'complete') {
+		l();
+	} else if (window.attachEvent) {
+		window.attachEvent('onload', l);
+	} else {
+		window.addEventListener('DOMContentLoaded', l, false);
+		window.addEventListener('load', l, false);
+	}
+})();
+ChannelIO('boot', {
+'pluginKey': 'd154adf3-af8b-4a2c-bbc0-d04f92da8ace' //please fill with your plugin key
+});
+	
+</script>
+<!-- End Channel Plugin -->
 
-</faq-cont>
+</body>
 </html>

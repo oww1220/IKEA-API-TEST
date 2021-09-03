@@ -1,5 +1,30 @@
 $(function(){
 
+	var titArray = [
+		'포스피드 고객지원입니다. <strong>자주 묻는 질문</strong>이 궁금하신가요?', 
+		'포스피드 고객지원입니다. <strong>제휴 문의</strong>가 궁금하신가요?',
+		'포스피드 고객지원입니다. <strong>해지신청</strong>이 궁금하신가요?',
+		'포스피드 고객지원입니다. <strong>포스피드를 만드는 (주)헬로월드</strong>가 궁금하신가요?',
+		'포스피드 고객지원입니다. <strong>이용약관</strong>이 궁금하신가요?',
+	];
+	function titChange(){
+		var $target = $('.tabmenu > a');
+		$target.each(function(idx, item){
+			var selected = JSON.parse($(item).attr('aria-selected'));
+			if(!selected) return; 
+			//console.log(idx, selected);
+			$('.subheadtxt').empty().append(titArray[idx]);
+		});
+	}
+
+	titChange();
+
+	$('.tabmenu > a').on('click', function(){
+		setTimeout(function(){
+			titChange();
+		}, 0);
+	});	
+
 	$('.faq-item .faq-top').on('click', function(){
 		if($(this).hasClass('active')) {
 			$(this).removeClass('active');
@@ -12,7 +37,6 @@ $(function(){
 	});
 
 	var curActiveVal = '전체';
-	faqListEach();
 	function faqListEach() {
 		$('.faq-item').removeClass('sort-active');
 		$('.faq-item').each(function(idx, item){
@@ -24,6 +48,8 @@ $(function(){
 			}
 		});
 	}
+	
+	faqListEach();
 
 	$('.category-list ul li').on('click', function(){
 		$(this).addClass('active').siblings().removeClass('active');
@@ -71,4 +97,14 @@ $(function(){
         searchFaq();
     });
 
+
+	
+});
+
+
+$(function(){
+	$('.header-sub a').on('click', function(e){
+		history.back(); 
+		e.preventDefault();
+	});
 });

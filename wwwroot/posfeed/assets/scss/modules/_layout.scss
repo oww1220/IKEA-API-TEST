@@ -113,6 +113,30 @@
     }
 }
 
+.MsoNormalTable {
+    th {
+        font-size: 16px;
+        line-height: 21px;
+        border:1px solid #000;
+    }
+    td {
+        padding: 20px;
+        font-size: 16px;
+        line-height: 21px;
+        border:1px solid #000;
+        p {
+            font-size: 16px;
+            line-height: 21px;
+            + p {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+.tablist.w--current > div {
+    color: #fff !important;
+}
+
 
 @include tab {
     html {
@@ -177,7 +201,27 @@
             padding: 25px 10px;
         }
     }
-
+    .MsoNormalTable {
+        th {
+            font-size: 16px;
+            line-height: 21px;
+            color: #000;
+        }
+        td {
+            padding: 10px;
+            font-size: 16px;
+            line-height: 21px;
+            color: #000;
+            p {
+                font-size: 16px;
+                line-height: 21px;
+                color: #000;
+                + p {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
 
 }
 
@@ -217,6 +261,23 @@
             line-height: 18px;
         }
     }
-
+    .MsoNormalTable {
+        th {
+            font-size: 13px;
+            line-height: 18px;
+        }
+        td {
+            padding: 10px;
+            font-size: 13px;
+            line-height: 18px;
+            p {
+                font-size: 13px;
+                line-height: 18px;
+                + p {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
 
 }
