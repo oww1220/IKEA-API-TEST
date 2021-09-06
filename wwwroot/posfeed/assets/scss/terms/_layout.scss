@@ -36,8 +36,10 @@
         @include Hide_txt;
         width: 50px;
         height: 50px;
-        @include Position($top:-30px, $right:20px);
+        @include Position($top:-35px, $right:20px);
         cursor: pointer;
+        background-color: #fff;
+        border-radius: 100%;
     }
     .video-wrap {position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;}
     .video-wrap iframe,
@@ -57,10 +59,15 @@
 
 @include tab {
 
-
 }
 
 @include mob {
-
+    .layer-wrap {
+        .layer-close {
+            width: 30px;
+            height: 30px;
+            top:-15px;
+        }
+    }
 
 }
