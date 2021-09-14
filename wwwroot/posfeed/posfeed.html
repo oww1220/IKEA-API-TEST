@@ -21,8 +21,24 @@
 			portalId: "8300948",
 			formId: "ec8c802b-6421-4aef-99b9-4349ab227328",
 			target: "#hs_custom_form",
+			redirectUrl: 'https://www.posfeed.co.kr/thankyou',
 		});
 	</script>
+
+	<style>
+		@media screen and (max-width:1024px) {
+			.header-main .header-mo {display: none;}
+		}
+	</style>
+
+<script>
+$(function(){
+	$('.header-sub .history-back').on('click', function(e){
+		history.back(); 
+		e.preventDefault();
+	});
+});
+</script>
     
 </head>
 
