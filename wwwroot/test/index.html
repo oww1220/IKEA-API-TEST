@@ -14,6 +14,24 @@
 </head>
 
 <body>
+    <select name="grpCode" class="customSelect" id="grpSearch" onchange="this.form.submit()">
+        <option value="ALL">계열사 별 보기</option>
+        <option value="H200">현대백화점그룹</option>
+        <option value="H101">현대백화점/아울렛</option>
+        <option value="H103">현대홈쇼핑</option>
+        <option value="H111">현대백화점면세점</option>
+        <option value="H108">한섬</option>
+        <option value="H106">현대그린푸드</option>
+        <option value="H110">현대리바트</option>
+        <option value="H112">현대L&amp;C</option>
+        <option value="H113">현대IT&amp;E</option>
+        <option value="H114">현대퓨처넷</option>
+        <option value="H115">현대렌탈케어</option>
+        <option value="H102">현대드림투어</option>
+        <option value="H116">현대이지웰</option>
+        <option value="H117">현대에버다임</option>
+        <option value="H118">현대바이오랜드</option>
+    </select>
 
     <link rel="stylesheet" href="https://www.ehyundai.com/css/group/ko/style.css?v=20191002">
     <div class="governance">
@@ -405,6 +423,23 @@
 
 
     <script>
+$(function(){
+    $(document).on({
+        focusout : function(){
+            setTimeout(function(){
+                $('#grpSearch').prop('disabled',false);
+            },0);
+        },
+    }, '#grpSearch');
+    $(document).on('keydown', function(e) {
+        //console.log($('.mem_slide li:hover .layer'));
+        var $target = $('#grpSearch:focus');
+        //console.log('length', $target.length, $target);
+        if(!$target.length) return;
+        $('#grpSearch').prop('disabled',true);
+    });
+});
+
     $(function(){
         var scrollpx = 0;
         $(document).on({
