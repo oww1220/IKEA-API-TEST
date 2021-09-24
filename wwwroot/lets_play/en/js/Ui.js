@@ -22,15 +22,38 @@ let UI;
           //게임 스타트 유무 확인
           if(this.state.start) this.removeIntro();
           
-
+          this.checkEndQuestion();
           this.initShowQuestion();
-          
           
         },
 
-        initShowQuestion() {
+        // 이미 선택완료한 캐릭터체크
+        checkEndQuestion() {
+          if(!this.state.questions) return;
+          let completeChk = 0;
+          this.state.questions.forEach(({end}, idx)=>{
+            //console.log(end , idx);
+            if(end) {
+              UI.$('.quizGame .step1 .contList').eq(idx).addClass('active');
+              completeChk++;
+            }
+          });
+
+          if(step1Length === completeChk) {
+            //console.log(completeChk);
+            this.goComplete();
+          }
+        },
+
+        calcRandom() {
           const random = Math.floor(Math.random() * step1Length);
-          console.log(random);
+          console.log('randomCurrent :', random);
+          return random;
+        },
+
+
+        initShowQuestion() {
+          const random = this.calcRandom();
           UI.$('.quizGame .step1 .questions').removeClass('active');
           UI.$('.quizGame .step1 .contList').eq(random).find('.questions').addClass('active');
         },
@@ -43,7 +66,7 @@ let UI;
         
         // step1-->step2
         upstairStep(idx) {
-          console.log(idx);
+          console.log('failureArea :', idx);
           UI.$('.quizGame .step1').removeClass('active');
           UI.$('.quizGame .step2').addClass('active');
           UI.$('.quizGame .step2 .failureArea .characterSection > div').eq(idx).addClass('active');
@@ -57,6 +80,19 @@ let UI;
           UI.$('.quizGame .step2 .failureArea .characterSection > div').removeClass('active');
         },
 
+        // 완료페이지로
+        goComplete() {
+          UI.$('.quizGame .step1').removeClass('active');
+          UI.$('.quizGame .step2').removeClass('active');
+          UI.$('.quizGame .complete').addClass('active');
+        },
+
+        resetGames() {
+          UI.$('.quizGame .complete').removeClass('active');
+          UI.$('.quizGame .intro').addClass('active');
+          this.resetState()
+        },
+
         // 질문 상태배열 초기화
         createQuestionArray() {
           //const length = UI.$('.step1 .contList').length;
@@ -67,6 +103,14 @@ let UI;
               end: false,
             };
           }
+
+          initialState.questions = this.state.questions;
+        },
+        
+        //reset상태
+        resetState() {
+          //console.log(initialState, this.state);
+          this.updateState(initialState);
         },
 
         // 상태업데이트 

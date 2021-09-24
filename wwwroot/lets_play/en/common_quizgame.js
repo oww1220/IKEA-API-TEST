@@ -6788,27 +6788,39 @@ $(function () {
 
   $(document).on({
     click: function click() {
+      if ($(this).parent().hasClass('active')) {
+        alert('캐릭터가 활성화 되었습니다.');
+        return;
+      }
+
       var chkActive = $(this).parent().find('.questions').hasClass('active');
       var idx = $(this).parent().index();
       var that = this;
-      console.log(idx, '???');
+      console.log('clickIdx :', idx);
 
       if (chkActive) {
         // 정답인 경우
         UI.Async.generaterRun( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+          var questions;
           return regeneratorRuntime.wrap(function _callee$(_context) {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
+                  questions = UI.playGame.state.questions;
                   $(that).closest('.contList').addClass('active');
-                  _context.next = 3;
+                  _context.next = 4;
                   return UI.Async.wait(500);
 
-                case 3:
+                case 4:
+                  questions[idx].end = true; //console.log(questions);
+
+                  UI.playGame.updateState({
+                    questions: questions
+                  });
                   alert('정답입니다.');
                   UI.playGame.initShowQuestion();
 
-                case 5:
+                case 8:
                 case "end":
                   return _context.stop();
               }
@@ -6847,7 +6859,7 @@ $(function () {
 
   $(document).on({
     click: function click() {
-      $(this).closest('.complete').removeClass('active').siblings('.intro').addClass('active');
+      UI.playGame.resetGames();
     }
   }, '.complete .btnArea .replayBtn');
 });
@@ -6883,11 +6895,35 @@ var UI;
         if (!this.getSession()) return; //게임 스타트 유무 확인
 
         if (this.state.start) this.removeIntro();
+        this.checkEndQuestion();
         this.initShowQuestion();
       },
-      initShowQuestion: function initShowQuestion() {
+      // 이미 선택완료한 캐릭터체크
+      checkEndQuestion: function checkEndQuestion() {
+        if (!this.state.questions) return;
+        var completeChk = 0;
+        this.state.questions.forEach(function (_ref, idx) {
+          var end = _ref.end;
+
+          //console.log(end , idx);
+          if (end) {
+            UI.$('.quizGame .step1 .contList').eq(idx).addClass('active');
+            completeChk++;
+          }
+        });
+
+        if (step1Length === completeChk) {
+          //console.log(completeChk);
+          this.goComplete();
+        }
+      },
+      calcRandom: function calcRandom() {
         var random = Math.floor(Math.random() * step1Length);
-        console.log(random);
+        console.log('randomCurrent :', random);
+        return random;
+      },
+      initShowQuestion: function initShowQuestion() {
+        var random = this.calcRandom();
         UI.$('.quizGame .step1 .questions').removeClass('active');
         UI.$('.quizGame .step1 .contList').eq(random).find('.questions').addClass('active');
       },
@@ -6898,7 +6934,7 @@ var UI;
       },
       // step1-->step2
       upstairStep: function upstairStep(idx) {
-        console.log(idx);
+        console.log('failureArea :', idx);
         UI.$('.quizGame .step1').removeClass('active');
         UI.$('.quizGame .step2').addClass('active');
         UI.$('.quizGame .step2 .failureArea .characterSection > div').eq(idx).addClass('active');
@@ -6908,6 +6944,17 @@ var UI;
         UI.$('.quizGame .step2').removeClass('active');
         UI.$('.quizGame .step1').addClass('active');
         UI.$('.quizGame .step2 .failureArea .characterSection > div').removeClass('active');
+      },
+      // 완료페이지로
+      goComplete: function goComplete() {
+        UI.$('.quizGame .step1').removeClass('active');
+        UI.$('.quizGame .step2').removeClass('active');
+        UI.$('.quizGame .complete').addClass('active');
+      },
+      resetGames: function resetGames() {
+        UI.$('.quizGame .complete').removeClass('active');
+        UI.$('.quizGame .intro').addClass('active');
+        this.resetState();
       },
       // 질문 상태배열 초기화
       createQuestionArray: function createQuestionArray() {
@@ -6920,6 +6967,13 @@ var UI;
             end: false
           };
         }
+
+        initialState.questions = this.state.questions;
+      },
+      //reset상태
+      resetState: function resetState() {
+        //console.log(initialState, this.state);
+        this.updateState(initialState);
       },
       // 상태업데이트 
       updateState: function updateState(param) {
@@ -6946,9 +7000,9 @@ var UI;
     };
   }(), UI.Async = {
     generaterRun: function generaterRun(iter) {
-      return function iterate(_ref) {
-        var value = _ref.value,
-            done = _ref.done;
+      return function iterate(_ref2) {
+        var value = _ref2.value,
+            done = _ref2.done;
         if (done) return value;
 
         if (value.constructor === Promise) {
