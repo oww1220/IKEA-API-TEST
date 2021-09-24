@@ -1,27 +1,52 @@
 $(()=>{
+
+  UI.playGame.initState();
+
   // 임시
   $(document).on({
     click : function(){
-      $(this).closest('.intro').removeClass('active').siblings('.step1').addClass('active');
+      UI.playGame.removeIntro();
+      UI.playGame.initShowQuestion();
+      UI.playGame.updateState({start: true});
     }
   },'.intro .btnArea .startBtn');
-  /*
-  // 정답 일 경우
+  
+  // 정답, 오답일 경우
   $(document).on({
     click : function(){
-      $(this).closest('.contList').addClass('active');
-    }
-  },'.step1 .chBtn'); */
+      const chkActive = $(this).parent().find('.questions').hasClass('active');
+      const idx = $(this).parent().index();
+      const that = this;
+      console.log(idx, '???');
 
-  // 오답 일 경우
-  $(document).on({
-    click : function(){
-      $(this).addClass('notAc');
-      setTimeout(function(){
-        $('.step1').removeClass('active').siblings('.step2').addClass('active');
-      },1000);
+      if(chkActive) { // 정답인 경우
+        UI.Async.generaterRun(
+        (function*() {
+            $(that).closest('.contList').addClass('active');
+            yield UI.Async.wait(500);
+            alert('정답입니다.');
+            UI.playGame.initShowQuestion();
+        })());
+      }
+      else {
+        
+        UI.Async.generaterRun(
+        (function*() {
+          $(that).addClass('notAc');
+          yield UI.Async.wait(1000);
+          UI.playGame.upstairStep(idx);
+          $(that).removeClass('notAc');
+          yield UI.Async.wait(3000);
+          UI.playGame.downstairStep();
+        })());
+
+        
+        
+      }
+
     }
-  },'.step1 .chBtn');
+  },'.step1 .chBtn'); 
+
 
 
   // Replay 버튼 클릭 시

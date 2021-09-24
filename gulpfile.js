@@ -38,7 +38,7 @@ const TASK_BASE_URL = `./wwwroot/${URL}/assets`;
 
 gulp.task('babel', ()=> 
     gulp
-    .src(['./wwwroot/lets_play/en/js/**/*.js'], {
+    .src([babel_polyfill_url, './wwwroot/lets_play/en/js/**/*.js' ], {
         sourcemaps: true
     })
     .pipe(
