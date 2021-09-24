@@ -33,6 +33,7 @@ $(()=>{
             //console.log(questions);
             UI.playGame.updateState({questions});
             alert('정답입니다.');
+            UI.playGame.checkEndQuestion();
             UI.playGame.initShowQuestion();
         })());
       }

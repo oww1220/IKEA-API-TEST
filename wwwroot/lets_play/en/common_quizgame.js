@@ -6818,9 +6818,10 @@ $(function () {
                     questions: questions
                   });
                   alert('정답입니다.');
+                  UI.playGame.checkEndQuestion();
                   UI.playGame.initShowQuestion();
 
-                case 8:
+                case 9:
                 case "end":
                   return _context.stop();
               }
@@ -6884,7 +6885,8 @@ var UI;
   UI.playGame = function () {
     var initialState = {
       start: false,
-      questions: null
+      questions: null,
+      complete: false
     };
     var step1Length = UI.$('.step1 .contList').length;
     return {
@@ -6914,12 +6916,24 @@ var UI;
 
         if (step1Length === completeChk) {
           //console.log(completeChk);
+          this.state.complete = true;
+          this.updateState({
+            complete: true
+          });
           this.goComplete();
         }
       },
       calcRandom: function calcRandom() {
+        console.log(this.state.complete);
+        if (this.state.complete) return;
         var random = Math.floor(Math.random() * step1Length);
-        console.log('randomCurrent :', random);
+        var chkRandom = this.state.questions[random].end;
+        console.log('randomCurrent :', random, chkRandom);
+
+        if (chkRandom) {
+          return this.calcRandom();
+        }
+
         return random;
       },
       initShowQuestion: function initShowQuestion() {
@@ -6952,6 +6966,7 @@ var UI;
         UI.$('.quizGame .complete').addClass('active');
       },
       resetGames: function resetGames() {
+        UI.$('.quizGame .step1 .contList').removeClass('active');
         UI.$('.quizGame .complete').removeClass('active');
         UI.$('.quizGame .intro').addClass('active');
         this.resetState();
@@ -6973,7 +6988,11 @@ var UI;
       //reset상태
       resetState: function resetState() {
         //console.log(initialState, this.state);
+        this.state = initialState; //sessionStorage.removeItem('gameState');
+
+        this.createQuestionArray();
         this.updateState(initialState);
+        console.log('reset :', this.state);
       },
       // 상태업데이트 
       updateState: function updateState(param) {

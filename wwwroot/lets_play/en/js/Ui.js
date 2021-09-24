@@ -7,6 +7,7 @@ let UI;
       const initialState = {
         start: false,
         questions: null,
+        complete: false,
       };
       const step1Length = UI.$('.step1 .contList').length;
       return {
@@ -41,13 +42,23 @@ let UI;
 
           if(step1Length === completeChk) {
             //console.log(completeChk);
+            this.state.complete = true;
+            this.updateState({complete: true});
             this.goComplete();
           }
         },
 
         calcRandom() {
+          console.log(this.state.complete);
+          if(this.state.complete) return;
           const random = Math.floor(Math.random() * step1Length);
-          console.log('randomCurrent :', random);
+          const chkRandom = this.state.questions[random].end;
+          console.log('randomCurrent :', random, chkRandom);
+
+          if(chkRandom) {
+            return this.calcRandom();
+          }
+
           return random;
         },
 
@@ -88,6 +99,7 @@ let UI;
         },
 
         resetGames() {
+          UI.$('.quizGame .step1 .contList').removeClass('active');
           UI.$('.quizGame .complete').removeClass('active');
           UI.$('.quizGame .intro').addClass('active');
           this.resetState()
@@ -110,7 +122,11 @@ let UI;
         //reset상태
         resetState() {
           //console.log(initialState, this.state);
+          this.state = initialState;
+          //sessionStorage.removeItem('gameState');
+          this.createQuestionArray();
           this.updateState(initialState);
+          console.log('reset :', this.state);
         },
 
         // 상태업데이트 
