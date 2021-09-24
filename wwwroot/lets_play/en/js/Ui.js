@@ -13,19 +13,17 @@ let UI;
       return {
         state: initialState,
         initState(){
-          //console.log(this.getSession());
+          console.log('arr??', this.state.questions, initialState.questions);
           if(!this.state.questions) this.createQuestionArray();
-
-
-
-          if(!this.getSession()) return;
+          const chkSession = this.getSession();
+          if(!chkSession) return;
           
           //게임 스타트 유무 확인
-          if(this.state.start) this.removeIntro();
-          
-          this.checkEndQuestion();
-          this.initShowQuestion();
-          
+          if(this.state.start) {
+            this.removeIntro();
+            this.checkEndQuestion();
+            this.initShowQuestion();
+          }
         },
 
         // 이미 선택완료한 캐릭터체크
@@ -107,24 +105,18 @@ let UI;
 
         // 질문 상태배열 초기화
         createQuestionArray() {
-          //const length = UI.$('.step1 .contList').length;
-          //console.log(step1Length)
-          this.state.questions = [];
+          initialState.questions = [];
           for(let i = 0; i < step1Length; i++) {
-            this.state.questions[i] = {
+            initialState.questions[i] = {
               end: false,
             };
           }
-
-          initialState.questions = this.state.questions;
         },
         
         //reset상태
         resetState() {
-          //console.log(initialState, this.state);
           this.state = initialState;
           //sessionStorage.removeItem('gameState');
-          this.createQuestionArray();
           this.updateState(initialState);
           console.log('reset :', this.state);
         },
@@ -136,7 +128,7 @@ let UI;
             ...this.state,
             ...param,
           }
-          console.log(initialState, this.state);
+          console.log('updateState :', initialState, this.state);
           this.updateSession(this.state);
         },
 
@@ -148,7 +140,7 @@ let UI;
         // 세션 가져오기
         getSession() {
           const data = sessionStorage.getItem('gameState');
-          //console.log(data);
+          //console.log('data', data);
           if(data) {
             this.state = JSON.parse(data);
             return true;
