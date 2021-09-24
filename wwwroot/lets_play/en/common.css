@@ -1,0 +1,155 @@
+@charset "utf-8";
+
+/*************************************************************
+		Let's play [EN]
+**************************************************************/
+#letsPlay2021{max-width:1597px;width:100%;margin:auto;}
+#letsPlay2021 a{display:block;color:#222;}
+#letsPlay2021 img{width:100%;vertical-align:top;display:block;}
+#letsPlay2021 h1, #letsPlay2021 h2, #letsPlay2021 h3, #letsPlay2021 ul, #letsPlay2021 li, #letsPlay2021 ol, #letsPlay2021 p{margin:0;padding:0;}
+#letsPlay2021 em{font-style:normal;}
+
+#letsPlay2021 .chkItem input[type="checkbox"] {display:none;}
+#letsPlay2021 .chkItem input[type="checkbox"] + label{height:3rem;padding-left:3rem;padding-left:3rem;background:url('https://img.ikeajpapi.com/campaigns/2021/202102/new_life/common/ico_unchecked.png') left center no-repeat;background-size:1.5rem 1.5rem;}
+#letsPlay2021 .chkItem input[type="checkbox"]:checked + label{background:url('https://img.ikeajpapi.com/campaigns/2021/202102/new_life/common/ico_checked.png') left center no-repeat;background-size:1.5rem 1.5rem;}
+#letsPlay2021 .chkItem .wrapper{display: -webkit-box; display: -ms-flexbox; display: flex;-webkit-box-lines: multiple; -ms-flex-wrap: wrap; flex-wrap: wrap;}
+#letsPlay2021 .chkItem .list .wrapper{-webkit-box-lines: single; -ms-flex-wrap: nowrap; flex-wrap: nowrap;}
+#letsPlay2021 .chkItem .sumBox .wrapper{-webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between;align-items:center;}
+#letsPlay2021 .chkItem .checkbox{display: -webkit-box; display: -ms-flexbox; display: flex;-webkit-box-align: center; -ms-flex-align: center; align-items: center;}
+#letsPlay2021 .chkItem .checkbox .check{margin-right:2rem;}
+#letsPlay2021 .chkItem .checkbox .name{font-weight:700;font-size:1rem;line-height:3rem;}
+#letsPlay2021 .chkItem .checkbox:not(.all) .name{position: absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:polygon(0 0, 0 0, 0 0);}
+#letsPlay2021 .chkItem .checkbox .price{position: absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:polygon(0 0, 0 0, 0 0);}
+
+#letsPlay2021 .chkItem .prodList{padding:0.5rem;border-bottom:2px solid #222;}
+#letsPlay2021 .chkItem .list{padding:0.5rem 0;}
+#letsPlay2021 .chkItem .list + .list{margin-top:0.5rem;border-top:1px solid #e3e3e3;}
+#letsPlay2021 .chkItem .checkbox .name{display:inline-block;}
+#letsPlay2021 .chkItem .info{width:calc(100% - 3rem);}
+#letsPlay2021 .chkItem .info .range-revamp-product-compact__image-wrapper{width:6.25rem;}
+#letsPlay2021 .chkItem .range-revamp-btn{display:block;opacity:1;}
+#letsPlay2021 .chkItem .range-revamp-product-compact{display: -webkit-box; display: -ms-flexbox; display: flex;-webkit-box-align: center; -ms-flex-align: center; align-items: center;width:100%;max-width:100%;padding:0;}
+#letsPlay2021 .chkItem .range-revamp-compact-price-package{margin:0;}
+#letsPlay2021 .chkItem .range-revamp-compact-price-package__additional-info{margin:0;}
+#letsPlay2021 .chkItem .range-revamp-header-section{display:block;}
+#letsPlay2021 .chkItem .range-revamp-compact-price-package__previous-price-wrapper{display:none;}
+#letsPlay2021 .chkItem .range-revamp-price__integer{font-size:0.875rem;}
+#letsPlay2021 .chkItem .range-revamp-price__currency-symbol--superscript{line-height:2;}
+#letsPlay2021 .chkItem .range-revamp-price__currency-symbol--superscript{font-size:0.5rem;}
+#letsPlay2021 .chkItem .range-revamp-compact-price-package__while-supply-last-text-date-range{opacity:1;}
+#letsPlay2021 .chkItem .range-revamp-product-compact__add-to-cart-button{bottom:auto;top:50%;transform:translateY(-50%);}
+#letsPlay2021 .chkItem .range-revamp-product-compact__bottom-wrapper{width:calc(100% - 6.25rem);margin-left:2.5rem;padding-right:4.5rem;}
+#letsPlay2021 .chkItem .sumBox{margin-top:1.813rem;}
+#letsPlay2021 .chkItem .sumBox .price{font-size:1.375rem;}
+#letsPlay2021 .chkItem .sumBox .sTxt{display:inline-block;font-size:1rem;font-weight:700;color:#222;}
+#letsPlay2021 .chkItem .sumBox .range-revamp-compact-price-package__price-wrapper{margin-bottom:0;}
+#letsPlay2021 .chkItem .sumBox .range-revamp-price__currency-symbol{line-height:0;font-size:1.313em;font-weight:700;}
+#letsPlay2021 .chkItem .sumBox .range-revamp-price__integer{font-size:2.250em;font-weight:700;}
+
+/* Quiz Game */
+#letsPlay2021 .quizGame{position:relative;overflow:hidden;}
+#letsPlay2021 .quizGame > div{padding-bottom:60.113%;}
+#letsPlay2021 .intro{display:none;opacity:0;background:url('../img/bg_intro.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step1{display:none;opacity:0;background:url('../img/bg_step1.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step2{display:none;background:url('../img/bg_step2.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .complete{display:none;background:url('../img/bg_complete.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .intro.active{display:block;opacity:1;}
+#letsPlay2021 .step1.active{display:block;opacity:1;}
+#letsPlay2021 .step2.active{display:block;opacity:1;}
+#letsPlay2021 .complete.active{display:block;}
+
+#letsPlay2021 .intro .btnArea{position:absolute;bottom:5%;left:50%;transform:translateX(-50%);width:17.533%;height:12.5%;}
+#letsPlay2021 .intro .startBtn{display:block;width:100%;height:100%;background:url('../img/img_start_btn.png') no-repeat center center;background-size:100%;}
+
+#letsPlay2021 .step1 .questions{display:none;position:absolute;top:4%;left:44.2%;width:30.984%;height:24.64%;padding:2.5%;background:url('../img/bg_step1_bubble.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step1 .questions.active{display:block;}
+#letsPlay2021 .step1 .questions strong{display:block;line-height:1.31;font-size:26px;letter-spacing:-.65px;}
+#letsPlay2021 .step1 .questions p{margin-top:6px;line-height:1.33;font-size:24px;letter-spacing:-.6px;}
+#letsPlay2021 .step1 .character1{cursor: pointer;position:absolute;top:1%;left:28%;width:15.03%;padding-bottom:23.9%;background:url('../img/img_step1_01_bird.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step1 .character2{cursor: pointer;position:absolute;top:32.2%;left:1.5%;width:20.5%;padding-bottom:17.7%;background:url('../img/img_step1_02_cat.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step1 .character3{cursor: pointer;position:absolute;top:34%;left:51%;width:27.8%;padding-bottom:33.4%;background:url('../img/img_step1_03_dog.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step1 .character4{cursor: pointer;position:absolute;top:27%;left:74%;width:18.8%;padding-bottom:12.8%;background:url('../img/img_step1_04_bread.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step1 .character5{cursor: pointer;position:absolute;top:50%;left:10.5%;width:26.6%;padding-bottom:24.6%;background:url('../img/img_step1_05_egg.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step1 .contList.active .character1{background-image:url('../img/img_step1_01_bird_active.png');}
+#letsPlay2021 .step1 .contList.active .character2{background-image:url('../img/img_step1_02_cat_active.png');}
+#letsPlay2021 .step1 .contList.active .character3{background-image:url('../img/img_step1_03_dog_active.png');}
+#letsPlay2021 .step1 .contList.active .character4{background-image:url('../img/img_step1_04_bread_active.png');}
+#letsPlay2021 .step1 .contList.active .character5{background-image:url('../img/img_step1_05_egg_active.png');}
+#letsPlay2021 .step1 .chBtn.notAc{animation: notAni .2s ease-in-out infinite alternate;}
+@keyframes notAni {
+	from {
+		transform: rotate(-5deg);
+	}
+	to {
+		transform: rotate(5deg);
+	}
+}
+
+#letsPlay2021 .step2 .failureArea{display:none;}
+#letsPlay2021 .step2 .successArea{display:none;}
+#letsPlay2021 .step2 .failureArea.active{display:block;}
+#letsPlay2021 .step2 .successArea.active{display:block;}
+#letsPlay2021 .step2 .character1{position:absolute;bottom:0;left:23.6%;width:23.2%;padding-bottom:36.85%;}
+#letsPlay2021 .step2 .character2{position:absolute;bottom:0;left:23%;width:34.26%;padding-bottom:29.73%;}
+#letsPlay2021 .step2 .character3{position:absolute;bottom:-5%;left:21%;width:34.89%;padding-bottom:41.8%;}
+#letsPlay2021 .step2 .character4{position:absolute;bottom:-7%;left:17%;width:42.94%;padding-bottom:34.51%;}
+#letsPlay2021 .step2 .character5{position:absolute;bottom:0;left:24%;width:35.2%;padding-bottom:31.85%;}
+#letsPlay2021 .step2 .failureArea .txtBox p{position:absolute;top:35%;left:50%;transform:translateX(-50%);line-height:1.44;letter-spacing:-.8px;font-size:32px;font-weight:700;}
+#letsPlay2021 .step2 .failureArea .character1{display:none;background:url('../img/img_step2_01_bird.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step2 .failureArea .character1.active{display:block;}
+#letsPlay2021 .step2 .failureArea .character2{display:none;background:url('../img/img_step2_02_cat.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step2 .failureArea .character2.active{display:block;}
+#letsPlay2021 .step2 .failureArea .character3{display:none;background:url('../img/img_step2_03_dog.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step2 .failureArea .character3.active{display:block;}
+#letsPlay2021 .step2 .failureArea .character4{display:none;background:url('../img/img_step2_04_bread.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step2 .failureArea .character4.active{display:block;}
+#letsPlay2021 .step2 .failureArea .character5{display:none;background:url('../img/img_step2_05_egg.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step2 .failureArea .character5.active{display:block;}
+#letsPlay2021 .step2 .successArea .txtBox p{line-height:1.5;letter-spacing:-.6px;font-size:24px;}
+#letsPlay2021 .step2 .successArea .contList{display:none;}
+#letsPlay2021 .step2 .successArea .contList.active{display:block;}
+#letsPlay2021 .step2 .successArea .contList.active .character1{display:block;background:url('../img/img_step2_01_bird_active.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step2 .successArea .contList.active .character2{display:block;background:url('../img/img_step2_02_cat_active.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step2 .successArea .contList.active .character3{display:block;background:url('../img/img_step2_03_dog_active.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step2 .successArea .contList.active .character4{display:block;background:url('../img/img_step2_04_bread_active.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step2 .successArea .contList.active .character5{display:block;background:url('../img/img_step2_05_egg_active.png') no-repeat center center;background-size:100%;}
+#letsPlay2021 .step2 .txtBox{position:absolute;top:0;left:50%;transform:translateX(-50%);width:44.1%;padding-bottom:46.56%;background:url('../img/bg_step2_bubble.png') no-repeat center center;background-size:100% 100%;}
+#letsPlay2021 .step2 .successArea .txtBox p{position:absolute;top:21%;left:28%;}
+#letsPlay2021 .step2 .backBtn{position:absolute;top:0;left:0;}
+#letsPlay2021 .step2 .pipLinkBtn{position:absolute;bottom:4%;left:52%;padding:10px 20px;font-weight:700;border:1px solid #e3e3e3;border-radius:90px;background-color:#fff;}
+
+#letsPlay2021 .complete .characterArea{position:absolute;top:10%;left:50%;transform:translateX(-50%);width:55.2%;}
+#letsPlay2021 .complete .btnArea{position:absolute;bottom:5%;left:50%;transform:translateX(-50%);width:18.848%;height:12.5%;}
+#letsPlay2021 .complete .replayBtn{display:block;width:100%;height:100%;background:url('../img/img_replay_btn.png') no-repeat center center;background-size:100%;}
+
+/** 미디어쿼리 **/
+/* 테블릿 */
+@media (min-width: 768px) and (max-width: 1024px){
+	#letsPlay2021 .step1 .questions strong{font-size:16px;}
+	#letsPlay2021 .step1 .questions p{font-size:12px;}
+
+	#letsPlay2021 .step2 .failureArea .txtBox p{font-size:22px;}
+}
+/* 모바일 */
+@media (max-width: 767px){
+	#letsPlay2021 .quizGame > div{padding-bottom:142.5%;}
+
+	#letsPlay2021 .intro{background-image:url('../img/bg_intro_mo.png');}
+	#letsPlay2021 .step1{background-image:url('../img/bg_step1_mo.png')}
+	#letsPlay2021 .step2{background-image:url('../img/bg_step2_mo.png')}
+
+	#letsPlay2021 .intro .btnArea{width:36.567%;}
+	#letsPlay2021 .intro .startBtn{background-image:url('../img/img_start_btn_mo.png');}
+
+	#letsPlay2021 .step1 .questions{background-image:url('../img/bg_step1_bubble_mo.png');}
+	#letsPlay2021 .step1 .character1{width:23.282%;}
+
+	/*
+	#letsPlay2021 .chkItem .prodList{height:28.375rem;overflow-x:hidden;overflow-y:scroll;} */
+}
+
+/* PC Desktop
+@media all and (min-width:1024px) {
+	#letsPlay2021 .evtBox{width:100%;margin-bottom:1rem;padding:0.25rem 0.75rem;border-radius:0.375rem;}
+	#letsPlay2021 .evt{font-size:1.5rem;line-height:2.25rem;}
+} */
