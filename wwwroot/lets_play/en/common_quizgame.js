@@ -6773,6 +6773,99 @@
 }, {}, [306]);
 "use strict";
 
+$(function () {
+  UI.playGame.initState(); // 임시
+
+  $(document).on({
+    click: function click() {
+      UI.playGame.removeIntro();
+      UI.playGame.initShowQuestion();
+      UI.playGame.updateState({
+        start: true
+      });
+    }
+  }, '.intro .btnArea .startBtn'); // 정답, 오답일 경우
+
+  $(document).on({
+    click: function click() {
+      if ($(this).parent().hasClass('active')) {
+        alert('캐릭터가 활성화 되었습니다.');
+        return;
+      }
+
+      var chkActive = $(this).parent().find('.questions').hasClass('active');
+      var idx = $(this).parent().index();
+      var that = this;
+      console.log('clickIdx :', idx);
+
+      if (chkActive) {
+        // 정답인 경우
+        UI.Async.generaterRun( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+          var questions;
+          return regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  questions = UI.playGame.state.questions;
+                  $(that).closest('.contList').addClass('active');
+                  _context.next = 4;
+                  return UI.Async.wait(500);
+
+                case 4:
+                  questions[idx].end = true; //console.log(questions);
+
+                  UI.playGame.updateState({
+                    questions: questions
+                  });
+                  alert('정답입니다.');
+                  UI.playGame.checkEndQuestion();
+                  UI.playGame.initShowQuestion();
+
+                case 9:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee);
+        })());
+      } else {
+        UI.Async.generaterRun( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  $(that).addClass('notAc');
+                  _context2.next = 3;
+                  return UI.Async.wait(1000);
+
+                case 3:
+                  UI.playGame.upstairStep(idx);
+                  $(that).removeClass('notAc');
+                  _context2.next = 7;
+                  return UI.Async.wait(3000);
+
+                case 7:
+                  UI.playGame.downstairStep();
+
+                case 8:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        })());
+      }
+    }
+  }, '.step1 .chBtn'); // Replay 버튼 클릭 시
+
+  $(document).on({
+    click: function click() {
+      UI.playGame.resetGames();
+    }
+  }, '.complete .btnArea .replayBtn');
+});
+"use strict";
+
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -7128,97 +7221,4 @@ var UI;
     }
   };
 })(UI || (UI = {}));
-"use strict";
-
-$(function () {
-  UI.playGame.initState(); // 임시
-
-  $(document).on({
-    click: function click() {
-      UI.playGame.removeIntro();
-      UI.playGame.initShowQuestion();
-      UI.playGame.updateState({
-        start: true
-      });
-    }
-  }, '.intro .btnArea .startBtn'); // 정답, 오답일 경우
-
-  $(document).on({
-    click: function click() {
-      if ($(this).parent().hasClass('active')) {
-        alert('캐릭터가 활성화 되었습니다.');
-        return;
-      }
-
-      var chkActive = $(this).parent().find('.questions').hasClass('active');
-      var idx = $(this).parent().index();
-      var that = this;
-      console.log('clickIdx :', idx);
-
-      if (chkActive) {
-        // 정답인 경우
-        UI.Async.generaterRun( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-          var questions;
-          return regeneratorRuntime.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  questions = UI.playGame.state.questions;
-                  $(that).closest('.contList').addClass('active');
-                  _context.next = 4;
-                  return UI.Async.wait(500);
-
-                case 4:
-                  questions[idx].end = true; //console.log(questions);
-
-                  UI.playGame.updateState({
-                    questions: questions
-                  });
-                  alert('정답입니다.');
-                  UI.playGame.checkEndQuestion();
-                  UI.playGame.initShowQuestion();
-
-                case 9:
-                case "end":
-                  return _context.stop();
-              }
-            }
-          }, _callee);
-        })());
-      } else {
-        UI.Async.generaterRun( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-          return regeneratorRuntime.wrap(function _callee2$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  $(that).addClass('notAc');
-                  _context2.next = 3;
-                  return UI.Async.wait(1000);
-
-                case 3:
-                  UI.playGame.upstairStep(idx);
-                  $(that).removeClass('notAc');
-                  _context2.next = 7;
-                  return UI.Async.wait(3000);
-
-                case 7:
-                  UI.playGame.downstairStep();
-
-                case 8:
-                case "end":
-                  return _context2.stop();
-              }
-            }
-          }, _callee2);
-        })());
-      }
-    }
-  }, '.step1 .chBtn'); // Replay 버튼 클릭 시
-
-  $(document).on({
-    click: function click() {
-      UI.playGame.resetGames();
-    }
-  }, '.complete .btnArea .replayBtn');
-});
 //# sourceMappingURL=maps/common_quizgame.js.map
