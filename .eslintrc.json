@@ -24,7 +24,7 @@
   },
   "globals": {
     //"IScroll": true,
-    //"Swiper": true,
+    "Swiper": true
     // "UI": true,
     //"lottie": true
   }
