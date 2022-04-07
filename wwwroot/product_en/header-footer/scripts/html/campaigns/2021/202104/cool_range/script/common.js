@@ -77,19 +77,4 @@ setTimeout(function () {
       prevEl: '.swiper-button-prev',
     },
   });
-  var swiper4 = new Swiper('.slide04', {
-    observer: true,
-    observeParents: true,
-    slidesPerView: 'auto',
-    spaceBetween: 20,
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'progressbar',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
 }, 500);
