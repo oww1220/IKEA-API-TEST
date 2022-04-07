@@ -92,10 +92,16 @@ $(function () {
 
   // callee
   var CampaignsRender = (function () {
-    var CampaignsRender = function (artNum, appendTarget, slideTarget) {
+    var CampaignsRender = function (
+      artNum,
+      appendTarget,
+      slideTarget,
+      nationPath,
+    ) {
       this.artNum = artNum;
       this.appendTarget = appendTarget;
       this.slideTarget = slideTarget;
+      this.nationPath = nationPath;
       this.proData = null;
       this.arrayIdx = null;
       this.articleVal = null;
@@ -120,7 +126,9 @@ $(function () {
           );
           $.ajax({
             url:
-              'https://www.ikea.com/jp/en/products/' +
+              'https://www.ikea.com/' +
+              _this.nationPath +
+              '/products/' +
               _this.cate +
               '/' +
               _this.articleVal +
@@ -190,6 +198,7 @@ $(function () {
     ],
     '.prodWrap_1',
     '.slide04_1',
+    'jp/en',
   ).init();
 
   var slide2 = new CampaignsRender(
@@ -204,6 +213,7 @@ $(function () {
     ],
     '.prodWrap_2',
     '.slide04_2',
+    'jp/en',
   ).init();
   // console.log(slide1, slide2);
 });
